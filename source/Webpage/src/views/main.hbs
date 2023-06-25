@@ -1,0 +1,44 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <script>
+    const logout = () => {window.location.href="http://localhost:3000/logout"};
+    const movecust = () => {window.location.href="http://localhost:3000/custpage"};
+    const movesale = () => {window.location.href="http://localhost:3000/salepage"};
+  </script>
+</head>
+<div class="header">
+  <div class="header-logo">
+    <div class="logo"><img
+        src="./img/inhaLogo.png"
+        alt="INHA CAR DEAL"
+      /></div>
+    <span class="logo-text">MAIN</span>
+  </div>
+
+  <div class="header-info">
+    <span class="header-info_title">인하 중고차 홈페이지에 오신 것을 환영합니다</span>
+  </div>
+</div>
+
+<div class="content">
+  <div class="side">
+    <div class="side-frame">
+      <div class="side-frame_id">
+        <div class="userinfo">{{user}}</div>
+        <button class="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="main-top">
+      <span class="main-top_title">
+        <h1>이용에 불편을 드려 정말 죄송합니다.</h1>
+        <h2>관리자 및 사용자 구분을 위해 로그아웃 후 다시 로그인 해주세요.</h2></span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="select.css" />
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+  <script>
+    const logout = () => {window.location.href="http://localhost:3000/logout"};
+    const movecustcar = () => {window.location.href="http://localhost:3000/custcar"};
+    const movecusttru = () => {window.location.href="http://localhost:3000/custtru"};
+    const movecustsuv = () => {window.location.href="http://localhost:3000/custsuv"};
+    const movecustres = () => {window.location.href="http://localhost:3000/custres"};
+    const movecustveh = () => {window.location.href="http://localhost:3000/custveh"};
+  </script>
+</head>
+<div class="header">
+  <div class="header-logo">
+    <div class="logo"><img
+        src="./img/inhaLogo.png"
+        alt="INHA CAR DEAL"
+      /></div>
+    <span class="logo-text">사용자</span>
+  </div>
+
+  <div class="header-info">
+    <span class="header-info_title">인하 중고차 사용자 홈페이지입니다</span>
+  </div>
+</div>
+
+<div class="content">
+  <div class="side">
+    <div class="side-frame">
+      <div class="side-frame_id">
+        <div class="userinfo">{{user}}</div>
+        <button class="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+    <div class="side-menu">
+      <div class="side-menu_list" onclick="movecustcar()">
+        <span>CAR 구매 예약하기</span>
+      </div>
+      <div class="side-menu_list" onclick="movecusttru()">
+        <span>TRUCK 구매 예약하기</span>
+      </div>
+      <div class="side-menu_list" onclick="movecustsuv()">
+        <span>SUV 구매 예약하기</span>
+      </div>
+      <div class="side-menu_list" onclick="movecustres()">
+        <span>예약 조회/취소</span>
+      </div>
+      <div class="side-menu_list" onclick="movecustveh()">
+        <span>MY Page, 구매 확정</span>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="main-top">
+      <span class="main-top_title">
+          <h1>{{user}}님 안녕하세요! 오늘도 <인하 중고차>를 이용해주셔서 감사합니다.</h1>
+          <h2>이 곳은 구매 예약을 원하는 중고차는 예약이 가능하며, 예약 조회 및 취소, 그리고 본인이 이 곳에서 구매한 중고차 정보를 볼 수 있습니다.</h2>
+          <h2>예약 시, 다른 사용자는 그 중고차를 예약할 수 없으며, 딜러가 판매 완료를 확정해야 구매가 확정이 됩니다.</h2>
+        </span>
+    </div>
+  </div>
+</div>

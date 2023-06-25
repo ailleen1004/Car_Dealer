@@ -1,0 +1,119 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="select.css" />
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+  <script>
+    const logout = () => {window.location.href="http://localhost:3000/logout"};
+    const movesalecar = () => {window.location.href="http://localhost:3000/salecar"};
+    const movesaletru = () => {window.location.href="http://localhost:3000/saletru"};
+    const movesalesuv = () => {window.location.href="http://localhost:3000/salesuv"};
+    const movesaleres = () => {window.location.href="http://localhost:3000/saleres"};    
+  </script>
+</head>
+<div class="header">
+  <div class="header-logo">
+    <div class="logo"><img
+        src="./img/inhaLogo.png"
+        alt="INHA CAR DEAL"
+      /></div>
+    <span class="logo-text">관리자</span>
+  </div>
+
+  <div class="header-info">
+    <span class="header-info_title">인하 중고차 관리자 홈페이지입니다</span>
+  </div>
+</div>
+
+<div class="content">
+  <div class="side">
+    <div class="side-frame">
+      <div class="side-frame_id">
+        <div class="userinfo">{{user}}</div>
+        <button class="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+    <div class="side-menu">
+      <div class="side-menu_list" onclick="movesalecar()">
+        <span>CAR 정보 수정/삭제</span>
+      </div>
+      <div class="side-menu_list" onclick="movesaletru()">
+        <span>TRUCK 정보 수정/삭제</span>
+      </div>
+      <div class="side-menu_list" onclick="movesalesuv()">
+        <span>SUV 정보 수정/삭제</span>
+      </div>
+      <div class="side-menu_list" onclick="movesaleres()">
+        <span>고객 예약 관리</span>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="main-top">
+      <div class="main-top_table">
+        <tr>
+          <form method="post">    
+          <td><h1>{{title}}</h1></td>
+          <td><h2>검색하고자 하는 car 모델명(car0~car99)을 입력하세요. </h2></td>
+          <td><input type="text" name="Model" placeholder="ex) car0" value=""></td>
+          <td> <button
+            style="margin-left: 10px;"
+            name='seaBtn'
+            type="submit"
+            value="{{Model}}"
+            formaction="/salecar/search">
+            검색           
+          </button></td>
+          </form>    
+        </tr>
+            <table>
+                <tr>
+                    <td>번호</td>
+                    <td>가격</td>
+                    <td>모델명</td>
+                    <td>엔진 사이즈</td>
+                    <td>판매 날짜</td>
+                    <td>판매 딜러</td>
+                    <td>소비자</td>
+                </tr>
+                {{#each car}}
+                <form method="post">
+                <tr>
+                    <td><input type="text" name="Vin" placeholder={{Vin}} value={{Vin}} style="border:0 solid black" readonly></td>
+                    <td><input type="text" name="Price" placeholder={{Price}} value={{Price}}></td>
+                    <td><input type="text" name="Model" placeholder={{Model}} value={{Model}}></td>
+                    <td><input type="text" name="Engine_size" placeholder={{Engine_size}} value={{Engine_size}}></td>
+                    <td>{{Sale_date}}</td>
+                    <td>{{SSid}}</td>
+                    <td>{{CSsn}}</td>                    
+                    <td style="border: 1px; margin-left: 10px; width: 70px;">
+                    <button 
+                      style="margin-left: 10px;"
+                      name='updBtn'
+                      type="submit"
+                      value="{{Vin}}"
+                      formaction="/salecar/update"
+                    >
+                    수정
+                    </button>
+                    </td>
+                    <td style="border: 1px; margin-left: 10px; width: 70px;">
+                    <button 
+                      style="margin-left: 10px;"
+                      name='delBtn'
+                      type="submit"
+                      value="{{Vin}}"
+                      formaction="/salecar/delete"
+                    >
+                    삭제
+                    </button>
+                    </td>                    
+                </tr>
+                </form>
+                {{/each}}
+            </table>
+      </div>
+    </div>
+  </div>
+</div>

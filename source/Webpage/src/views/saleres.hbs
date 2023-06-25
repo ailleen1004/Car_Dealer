@@ -1,0 +1,270 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="select.css" />
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+  <script>
+    const logout = () => {window.location.href="http://localhost:3000/logout"};
+    const movesalecar = () => {window.location.href="http://localhost:3000/salecar"};
+    const movesaletru = () => {window.location.href="http://localhost:3000/saletru"};
+    const movesalesuv = () => {window.location.href="http://localhost:3000/salesuv"};
+    const movesaleres = () => {window.location.href="http://localhost:3000/saleres"};
+  </script>
+</head>
+<div class="header">
+  <div class="header-logo">
+    <div class="logo"><img
+        src="./img/inhaLogo.png"
+        alt="INHA CAR DEAL"
+      /></div>
+    <span class="logo-text">관리자</span>
+  </div>
+
+  <div class="header-info">
+    <span class="header-info_title">인하 중고차 관리자 홈페이지입니다</span>
+  </div>
+</div>
+
+<div class="content">
+  <div class="side">
+    <div class="side-frame">
+      <div class="side-frame_id">
+        <div class="userinfo">{{user}}</div>
+        <button class="logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+    <div class="side-menu">
+      <div class="side-menu_list" onclick="movesalecar()">
+        <span>CAR 정보 수정/삭제</span>
+      </div>
+      <div class="side-menu_list" onclick="movesaletru()">
+        <span>TRUCK 정보 수정/삭제</span>
+      </div>
+      <div class="side-menu_list" onclick="movesalesuv()">
+        <span>SUV 정보 수정/삭제</span>
+      </div>
+      <div class="side-menu_list" onclick="movesaleres()">
+        <span>고객 예약 관리</span>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="main-top">
+      <div class="main-top_table">
+        <h1>{{title1}}</h1>
+        <h2>예약된 CAR</h2>
+            <table>
+                <tr>
+                    <td>번호</td>
+                    <td>가격</td>
+                    <td>모델명</td>
+                    <td>엔진 사이즈</td>
+                    <td>예약자</td>
+                    <td>My Sid</td>
+                </tr>
+                {{#each car}}
+                <form method="post">
+                <tr>
+                    <td><input type="text" name="Vin" placeholder={{Vin}} value={{Vin}} style="border:0 solid black" readonly></td>
+                    <td>{{Price}}</td>
+                    <td><input type="text" name="Model" placeholder={{Model}} value={{Model}} style="border:0 solid black" readonly></td>
+                    <td>{{Engine_size}}</td>
+                    <td>{{CSsn}}</td>
+                    <td><input type="text" name="Sid" placeholder={{Sid}} value={{Sid}} style="border:0 solid black" readonly></td>                    
+                    <td style="border: 1px; margin-left: 10px;">
+                    <button 
+                      style="margin-left: 10px;"
+                      name='updBtn'
+                      type="submit"
+                      value="{{Vin}}"
+                      formaction="/saleres/succ"
+                    >
+                    판매완료
+                    </button>
+                    </td>
+                    <td style="border: 1px; margin-left: 10px;">
+                    <button 
+                      style="margin-left: 10px;"
+                      name='delBtn'
+                      type="submit"
+                      value="{{Vin}}"
+                      formaction="/saleres/fail"
+                    >
+                    판매실패
+                    </button>
+                    </td>                        
+                </tr>
+                </form>
+                {{/each}}
+            </table>
+            <h2>예약된 TRUCK</h2>
+            <table>
+                <tr>
+                    <td>번호</td>
+                    <td>가격</td>
+                    <td>모델명</td>
+                    <td>무게</td>
+                    <td>예약자</td>
+                    <td>My Sid</td>
+                </tr>
+                {{#each truck}}
+                <form method="post">
+                <tr>
+                    <td><input type="text" name="Vin" placeholder={{Vin}} value={{Vin}} style="border:0 solid black" readonly></td>
+                    <td>{{Price}}</td>
+                    <td><input type="text" name="Model" placeholder={{Model}} value={{Model}} style="border:0 solid black" readonly></td>
+                    <td>{{Tonnage}}</td>
+                    <td>{{CSsn}}</td>
+                    <td><input type="text" name="Sid" placeholder={{Sid}} value={{Sid}} style="border:0 solid black" readonly></td>                    
+                    <td style="border: 1px; margin-left: 10px;">
+                    <button 
+                      style="margin-left: 10px;"
+                      name='updBtn'
+                      type="submit"
+                      value="{{Vin}}"
+                      formaction="/saleres/succ"
+                    >
+                    판매완료
+                    </button>
+                    </td>
+                    <td style="border: 1px; margin-left: 10px;">
+                    <button 
+                      style="margin-left: 10px;"
+                      name='delBtn'
+                      type="submit"
+                      value="{{Vin}}"
+                      formaction="/saleres/fail"
+                    >
+                    판매실패
+                    </button>
+                    </td>                 
+                </tr>
+                </form>
+                {{/each}}
+            </table>
+            <h2>예약된 SUV</h2>
+            <table>
+                <tr>
+                    <td>번호</td>
+                    <td>가격</td>
+                    <td>모델명</td>
+                    <td>좌석수</td>
+                    <td>예약자</td>
+                    <td>My Sid</td>
+                </tr>
+                {{#each suv}}
+                <form method="post">
+                <tr>
+                    <td><input type="text" name="Vin" placeholder={{Vin}} value={{Vin}} style="border:0 solid black" readonly></td>
+                    <td>{{Price}}</td>
+                    <td><input type="text" name="Model" placeholder={{Model}} value={{Model}} style="border:0 solid black" readonly></td>
+                    <td>{{No_seats}}</td>
+                    <td>{{CSsn}}</td>
+                    <td><input type="text" name="Sid" placeholder={{Sid}} value={{Sid}} style="border:0 solid black" readonly></td>                    
+                    <td style="border: 1px; margin-left: 10px;">
+                    <button 
+                      style="margin-left: 10px;"
+                      name='updBtn'
+                      type="submit"
+                      value="{{Vin}}"
+                      formaction="/saleres/succ"
+                    >
+                    판매완료
+                    </button>
+                    </td>
+                    <td style="border: 1px; margin-left: 10px;">
+                    <button 
+                      style="margin-left: 10px;"
+                      name='delBtn'
+                      type="submit"
+                      value="{{Vin}}"
+                      formaction="/saleres/fai"
+                    >
+                    판매실패
+                    </button>
+                    </td>                  
+                </tr>
+                </form>
+                {{/each}}
+            </table>
+        <h1>{{title2}}</h1>
+        <h2>판매 완료된 CAR</h2>
+            <table>
+                <tr>
+                    <td>번호</td>
+                    <td>가격</td>
+                    <td>모델명</td>
+                    <td>엔진 사이즈</td>
+                    <td>판매 날짜</td>
+                    <td>딜러</td>
+                    <td>소비자</td>
+                </tr>
+                {{#each salecar}}
+                <form method="post">
+                <tr>
+                    <td>{{Vin}}</td>
+                    <td>{{Price}}</td>
+                    <td>{{Model}}</td>
+                    <td>{{Engine_size}}</td>
+                    <td>{{Sale_date}}</td>                    
+                    <td>{{SSid}}</td>
+                    <td>{{CSsn}}</td>                   
+                </tr>
+                </form>
+                {{/each}}
+            </table>
+        <h2>판매 완료된 TRUCK</h2>
+            <table>
+                <tr>
+                    <td>번호</td>
+                    <td>가격</td>
+                    <td>모델명</td>
+                    <td>무게</td>
+                    <td>판매 날짜</td>
+                    <td>딜러</td>
+                    <td>소비자</td>
+                </tr>
+                {{#each saletruck}}
+                <form method="post">
+                <tr>
+                    <td>{{Vin}}</td>
+                    <td>{{Price}}</td>
+                    <td>{{Model}}</td>
+                    <td>{{Tonnage}}</td>
+                    <td>{{Sale_date}}</td>                    
+                    <td>{{SSid}}</td>
+                    <td>{{CSsn}}</td>                   
+                </tr>
+                </form>
+                {{/each}}
+            </table>
+        <h2>판매 완료된 SUV</h2>
+            <table>
+                <tr>
+                    <td>번호</td>
+                    <td>가격</td>
+                    <td>모델명</td>
+                    <td>좌석수</td>
+                    <td>판매 날짜</td>
+                    <td>딜러</td>
+                    <td>소비자</td>
+                </tr>
+                {{#each salesuv}}
+                <form method="post">
+                <tr>
+                    <td>{{Vin}}</td>
+                    <td>{{Price}}</td>
+                    <td>{{Model}}</td>
+                    <td>{{No_seats}}</td>
+                    <td>{{Sale_date}}</td>                    
+                    <td>{{SSid}}</td>
+                    <td>{{CSsn}}</td>                   
+                </tr>
+                </form>
+                {{/each}}
+            </table>
+      </div>
+    </div>
+  </div>
+</div>
